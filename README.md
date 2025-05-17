@@ -1,6 +1,6 @@
-# Programming Learning Repository
+# Assignment 
 
-This repository contains a comprehensive collection of examples and practice materials for learning programming across multiple domains: Java, SQL, and Frontend Web Development (HTML, CSS, and JavaScript). It's structured as a progressive learning path for each technology.
+This repository contains an assignment for Java, SQL, and Frontend Web Development (HTML, CSS, and JavaScript). 
 
 ## Repository Structure
 
@@ -9,7 +9,7 @@ The repository is organized into three main sections:
 ```
 /
 ├── 1.java/            # Java programming examples
-├── 2.sql/             # SQL examples and documentation
+├── 2.sql/             # SQL docx file
 └── 3.frontend/        # Frontend web development
     ├── html/          # HTML examples
     ├── css/           # CSS examples
@@ -89,29 +89,4 @@ The frontend section is divided into three key web technologies:
 ├── basics/            # JavaScript fundamentals
 └── events/            # Event handling and user interaction
 ```
-
-## How to Use This Repository
-
-1. **Learning Path**: The numbered directories suggest a recommended learning sequence.
-2. **Examples**: Each concept includes practical examples that you can run and modify.
-3. **Progressive Complexity**: Topics build on each other, introducing new concepts incrementally.
-
-## Running the Examples
-
-### Java Examples
-- Requires Java Development Kit (JDK) installed
-- Compile with: `javac FileName.java`
-- Run with: `java FileName`
-
-### Web Development Examples
-- Open HTML files in any modern web browser
-- JavaScript examples can be viewed using the included JS file viewer in `3.frontend/js/basics/view_js.html`
-
-## Contribution
-
-Feel free to contribute additional examples, corrections, or improvements through pull requests.
-
-## License
-
-This repository is for educational purposes. All code samples are free to use and modify for personal learning. 
 

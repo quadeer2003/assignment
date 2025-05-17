@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Console Debugging</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        
+        code {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        
+        .console-example {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            background-color: #2d2d2d;
+            color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        
+        .hint {
+            background-color: #fffde7;
+            padding: 10px;
+            border-left: 4px solid #ffeb3b;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Using console.log() for Debugging</h1>
+    <p>This page demonstrates various ways to use the console for debugging JavaScript. <strong>Open your browser's console (F12 or Ctrl+Shift+J) to see the output.</strong></p>
+    
+    <div class="section">
+        <h2>1. Basic console.log()</h2>
+        <p>The simplest use of console.log() to output values:</p>
+        <pre><code>console.log("Hello, World!");
+console.log(42);
+console.log(true);</code></pre>
+        
+        <button id="basic-button">Run Basic Example</button>
+        
+        <script>
+            document.getElementById("basic-button").addEventListener("click", function() {
+                console.log("Hello, World!");
+                console.log(42);
+                console.log(true);
+                
+                alert("Check the console! (F12 or Ctrl+Shift+J)");
+            });
+        </script>
+    </div>
+    
+    <div class="section">
+        <h2>2. Logging Variables and Objects</h2>
+        <p>Debugging variables and inspecting objects:</p>
+        <pre><code>let person = {
+    name: "John Doe",
+    age: 30,
+    job: "Developer"
+};
+
+console.log("Person object:", person);
+console.log("Name:", person.name);
+console.log("Age:", person.age);</code></pre>
+        
+        <button id="object-button">Log Objects</button>
+        
+        <script>
+            document.getElementById("object-button").addEventListener("click", function() {
+                let person = {
+                    name: "John Doe",
+                    age: 30,
+                    job: "Developer"
+                };
+                
+                console.log("Person object:", person);
+                console.log("Name:", person.name);
+                console.log("Age:", person.age);
+                
+                alert("Check the console! Objects were logged.");
+            });
+        </script>
+    </div>
+    
+    <div class="section">
+        <h2>3. Debugging Function Execution</h2>
+        <p>Using console.log() to track function execution and parameter values:</p>
+        <pre><code>function calculateArea(width, height) {
+    console.log("Function calculateArea called");
+    console.log("Parameters:", { width, height });
+    
+    const area = width * height;
+    console.log("Calculated area:", area);
+    
+    return area;
+}
+
+const area = calculateArea(5, 10);</code></pre>
+        
+        <button id="function-button">Debug Function</button>
+        
+        <script>
+            document.getElementById("function-button").addEventListener("click", function() {
+                function calculateArea(width, height) {
+                    console.log("Function calculateArea called");
+                    console.log("Parameters:", { width, height });
+                    
+                    const area = width * height;
+                    console.log("Calculated area:", area);
+                    
+                    return area;
+                }
+                
+                const area = calculateArea(5, 10);
+                console.log("Returned area:", area);
+                
+                alert("Check the console to see function execution!");
+            });
+        </script>
+    </div>
+    
+    <div class="section">
+        <h2>4. Advanced Console Methods</h2>
+        <p>Beyond console.log() - Other useful methods:</p>
+        <pre><code>console.info("This is information");
+console.warn("This is a warning");
+console.error("This is an error");
+console.table([
+    { name: "John", age: 30 },
+    { name: "Jane", age: 25 }
+]);</code></pre>
+        
+        <button id="advanced-button">Show Advanced Console Methods</button>
+        
+        <script>
+            document.getElementById("advanced-button").addEventListener("click", function() {
+                console.info("This is information");
+                console.warn("This is a warning");
+                console.error("This is an error");
+                console.table([
+                    { name: "John", age: 30 },
+                    { name: "Jane", age: 25 }
+                ]);
+                
+                alert("Check the console for different types of messages!");
+            });
+        </script>
+    </div>
+    
+    <div class="section">
+        <h2>5. Debugging with Timers</h2>
+        <p>Measuring execution time:</p>
+        <pre><code>console.time("Loop time");
+for (let i = 0; i < 1000000; i++) {
+    // Some operation
+}
+console.timeEnd("Loop time");</code></pre>
+        
+        <button id="timer-button">Run Timer Example</button>
+        
+        <script>
+            document.getElementById("timer-button").addEventListener("click", function() {
+                console.time("Loop time");
+                for (let i = 0; i < 1000000; i++) {
+                    // Some operation
+                    let x = i * 2;
+                }
+                console.timeEnd("Loop time");
+                
+                alert("Check the console for loop execution time!");
+            });
+        </script>
+    </div>
+    
+    <div class="section">
+        <h2>6. Debugging a Bug</h2>
+        <p>Using console.log() to find and fix a bug:</p>
+        <pre><code>function calculateSum(numbers) {
+    console.log("Input array:", numbers);
+    
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        console.log(`Adding numbers[${i}]: ${numbers[i]}`);
+        sum += numbers[i];
+        console.log(`Current sum: ${sum}`);
+    }
+    
+    return sum;
+}</code></pre>
+        
+        <button id="bug-button">Debug a Bug</button>
+        
+        <script>
+            document.getElementById("bug-button").addEventListener("click", function() {
+                // Function with a bug (doesn't validate input)
+                function calculateBuggySum(numbers) {
+                    console.log("Input:", numbers);
+                    
+                    let sum = 0;
+                    for (let i = 0; i < numbers.length; i++) {
+                        sum += numbers[i];
+                    }
+                    
+                    console.log("Final sum:", sum);
+                    return sum;
+                }
+                
+                // Function with proper debugging
+                function calculateDebuggedSum(numbers) {
+                    console.log("Input array:", numbers);
+                    
+                    // Validate input
+                    if (!Array.isArray(numbers)) {
+                        console.error("Input is not an array!");
+                        return NaN;
+                    }
+                    
+                    let sum = 0;
+                    for (let i = 0; i < numbers.length; i++) {
+                        if (typeof numbers[i] !== 'number') {
+                            console.warn(`Item at index ${i} is not a number: ${numbers[i]}`);
+                            continue;
+                        }
+                        
+                        console.log(`Adding numbers[${i}]: ${numbers[i]}`);
+                        sum += numbers[i];
+                        console.log(`Current sum: ${sum}`);
+                    }
+                    
+                    console.log("Final sum:", sum);
+                    return sum;
+                }
+                
+                // Create an array with a non-number
+                const numbers = [1, 2, "3", 4, 5];
+                
+                console.log("--- Buggy Function Output ---");
+                calculateBuggySum(numbers);
+                
+                console.log("--- Debugged Function Output ---");
+                calculateDebuggedSum(numbers);
+                
+                alert("Check the console to see how debugging helped identify the issue!");
+            });
+        </script>
+    </div>
+    
+    <div class="hint">
+        <h3>Tips for Effective Console Debugging:</h3>
+        <ul>
+            <li>Use descriptive labels in your console.log() messages</li>
+            <li>Use console.table() for arrays and objects when appropriate</li>
+            <li>Use console.time() and console.timeEnd() to measure performance</li>
+            <li>Use console.warn() and console.error() for different severity levels</li>
+            <li>Remember to remove or disable console.log() statements in production code</li>
+        </ul>
+    </div>
+</body>
+</html> 

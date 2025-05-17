@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Grid Layouts</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            margin: 40px 0;
+        }
+        
+        /* Common grid item styles */
+        .grid-item {
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Basic Grid Layout */
+        .basic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Grid with Custom Column Sizes */
+        .custom-columns-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Grid with Rows and Columns */
+        .rows-columns-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 100px 150px;
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Grid with Areas */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto auto;
+            grid-template-areas: 
+                "header header header"
+                "sidebar content content"
+                "footer footer footer";
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            grid-area: header;
+            background-color: #e74c3c;
+        }
+        
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #2ecc71;
+        }
+        
+        .content {
+            grid-area: content;
+            background-color: #f39c12;
+        }
+        
+        .footer {
+            grid-area: footer;
+            background-color: #9b59b6;
+        }
+        
+        /* Grid with Item Placement */
+        .item-placement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 100px);
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .item1 {
+            grid-column: 1 / 3;
+            grid-row: 1 / 2;
+            background-color: #e74c3c;
+        }
+        
+        .item2 {
+            grid-column: 3 / 4;
+            grid-row: 1 / 3;
+            background-color: #2ecc71;
+        }
+        
+        .item3 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 4;
+            background-color: #f39c12;
+        }
+        
+        .item4 {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            background-color: #9b59b6;
+        }
+        
+        .item5 {
+            grid-column: 2 / 4;
+            grid-row: 3 / 4;
+            background-color: #1abc9c;
+        }
+        
+        /* Auto-fit Grid */
+        .auto-fit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Grid Layouts</h1>
+        
+        <div class="section">
+            <h2>Basic Grid Layout</h2>
+            <p>A simple 3-column grid with equal width columns (1fr).</p>
+            <div class="basic-grid">
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+                <div class="grid-item">6</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Grid with Custom Column Sizes</h2>
+            <p>A 3-column grid with different column widths (1fr, 2fr, 1fr).</p>
+            <div class="custom-columns-grid">
+                <div class="grid-item">1 (1fr)</div>
+                <div class="grid-item">2 (2fr)</div>
+                <div class="grid-item">3 (1fr)</div>
+                <div class="grid-item">4 (1fr)</div>
+                <div class="grid-item">5 (2fr)</div>
+                <div class="grid-item">6 (1fr)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Grid with Rows and Columns</h2>
+            <p>A grid with defined row heights (100px, 150px) and column widths (1fr each).</p>
+            <div class="rows-columns-grid">
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+                <div class="grid-item">6</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Grid with Named Areas</h2>
+            <p>A grid using named template areas for layout.</p>
+            <div class="areas-grid">
+                <div class="grid-item header">Header</div>
+                <div class="grid-item sidebar">Sidebar</div>
+                <div class="grid-item content">Content</div>
+                <div class="grid-item footer">Footer</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Grid with Item Placement</h2>
+            <p>A grid with items spanning multiple cells using grid-column and grid-row.</p>
+            <div class="item-placement-grid">
+                <div class="grid-item item1">Item 1</div>
+                <div class="grid-item item2">Item 2</div>
+                <div class="grid-item item3">Item 3</div>
+                <div class="grid-item item4">Item 4</div>
+                <div class="grid-item item5">Item 5</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Responsive Auto-fit Grid</h2>
+            <p>A grid that automatically adjusts the number of columns based on container width, with a minimum column width of 150px.</p>
+            <div class="auto-fit-grid">
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+                <div class="grid-item">6</div>
+                <div class="grid-item">7</div>
+                <div class="grid-item">8</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

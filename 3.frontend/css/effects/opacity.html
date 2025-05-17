@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Opacity</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        .example-container {
+            margin: 30px 0;
+        }
+        
+        .images-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .image-container {
+            margin: 20px;
+            text-align: center;
+        }
+        
+        .image-container img {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ddd;
+        }
+        
+        /* Opacity examples */
+        .opacity-100 {
+            opacity: 1; /* Fully opaque (default) */
+        }
+        
+        .opacity-75 {
+            opacity: 0.75; /* 75% opaque */
+        }
+        
+        .opacity-50 {
+            opacity: 0.5; /* 50% opaque */
+        }
+        
+        .opacity-25 {
+            opacity: 0.25; /* 25% opaque */
+        }
+        
+        .opacity-0 {
+            opacity: 0; /* Fully transparent (invisible) */
+        }
+        
+        /* Opacity hover effects */
+        .opacity-hover {
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        
+        .opacity-hover:hover {
+            opacity: 1;
+        }
+        
+        /* Opacity with background */
+        .opacity-with-bg {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .opacity-with-bg img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0.5;
+        }
+        
+        .text-on-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Opacity</h1>
+        <p>The opacity property specifies the transparency of an element. Values range from 0.0 (completely transparent) to 1.0 (completely opaque).</p>
+        
+        <div class="example-container">
+            <h2>Basic Opacity Values</h2>
+            <div class="images-container">
+                <div class="image-container">
+                    <img class="opacity-100" src="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Opacity 100%">
+                    <p>opacity: 1 (100%)</p>
+                </div>
+                
+                <div class="image-container">
+                    <img class="opacity-75" src="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Opacity 75%">
+                    <p>opacity: 0.75 (75%)</p>
+                </div>
+                
+                <div class="image-container">
+                    <img class="opacity-50" src="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Opacity 50%">
+                    <p>opacity: 0.5 (50%)</p>
+                </div>
+                
+                <div class="image-container">
+                    <img class="opacity-25" src="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Opacity 25%">
+                    <p>opacity: 0.25 (25%)</p>
+                </div>
+                
+                <div class="image-container">
+                    <img class="opacity-0" src="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Opacity 0%">
+                    <p>opacity: 0 (0%)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-container">
+            <h2>Opacity Hover Effect</h2>
+            <p>Hover over the image to see it change from 50% opacity to 100% opacity.</p>
+            <div class="images-container">
+                <div class="image-container">
+                    <img class="opacity-hover" src="https://via.placeholder.com/200/e74c3c/ffffff?text=Hover+Me" alt="Hover for full opacity">
+                    <p>Opacity transitions from 0.5 to 1 on hover</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-container">
+            <h2>Opacity for Overlays</h2>
+            <p>A common use case for opacity is to create semi-transparent overlays on images.</p>
+            <div class="images-container">
+                <div class="image-container">
+                    <div class="opacity-with-bg">
+                        <img src="https://via.placeholder.com/200/2ecc71/ffffff?text=Base+Image" alt="Base image">
+                        <div class="overlay"></div>
+                        <div class="text-on-image">Text on a semi-transparent background</div>
+                    </div>
+                    <p>Image with semi-transparent overlay</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-container">
+            <h2>Important Notes About Opacity</h2>
+            <ul>
+                <li>When using opacity, all child elements inherit the same transparency.</li>
+                <li>If you want transparent backgrounds but fully opaque text, use rgba() colors instead of opacity.</li>
+                <li>Value range: 0.0 (completely transparent) to 1.0 (completely opaque).</li>
+                <li>Opacity affects the entire element, including borders and text.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

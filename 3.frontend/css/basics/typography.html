@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Typography</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        /* Font Families */
+        .serif {
+            font-family: Georgia, Times, "Times New Roman", serif;
+        }
+        
+        .sans-serif {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .monospace {
+            font-family: "Courier New", Courier, monospace;
+        }
+        
+        .cursive {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+        
+        .fantasy {
+            font-family: Impact, fantasy;
+        }
+        
+        /* Font Sizes */
+        .size-px {
+            font-size: 18px;
+        }
+        
+        .size-em {
+            font-size: 1.5em;
+        }
+        
+        .size-rem {
+            font-size: 1.5rem;
+        }
+        
+        .size-percent {
+            font-size: 120%;
+        }
+        
+        .size-small {
+            font-size: small;
+        }
+        
+        .size-large {
+            font-size: large;
+        }
+        
+        .size-xx-large {
+            font-size: xx-large;
+        }
+        
+        /* Font Styles */
+        .style-normal {
+            font-style: normal;
+        }
+        
+        .style-italic {
+            font-style: italic;
+        }
+        
+        .style-oblique {
+            font-style: oblique;
+        }
+        
+        /* Font Weight */
+        .weight-normal {
+            font-weight: normal;
+        }
+        
+        .weight-bold {
+            font-weight: bold;
+        }
+        
+        .weight-bolder {
+            font-weight: bolder;
+        }
+        
+        .weight-lighter {
+            font-weight: lighter;
+        }
+        
+        /* Text Colors */
+        .color-named {
+            color: red;
+        }
+        
+        .color-hex {
+            color: #3498db;
+        }
+        
+        .color-rgb {
+            color: rgb(46, 204, 113);
+        }
+        
+        .color-rgba {
+            color: rgba(231, 76, 60, 0.8);
+        }
+        
+        .color-hsl {
+            color: hsl(280, 50%, 60%);
+        }
+        
+        /* Text Alignment */
+        .align-left {
+            text-align: left;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        
+        .align-center {
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        
+        .align-right {
+            text-align: right;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        
+        .align-justify {
+            text-align: justify;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Typography</h1>
+        
+        <div class="section">
+            <h2>Font Families</h2>
+            <p class="serif">This text uses a serif font family (Georgia, Times, "Times New Roman", serif).</p>
+            <p class="sans-serif">This text uses a sans-serif font family (Arial, Helvetica, sans-serif).</p>
+            <p class="monospace">This text uses a monospace font family ("Courier New", Courier, monospace).</p>
+            <p class="cursive">This text uses a cursive font family ("Comic Sans MS", cursive, sans-serif).</p>
+            <p class="fantasy">This text uses a fantasy font family (Impact, fantasy).</p>
+        </div>
+        
+        <div class="section">
+            <h2>Font Sizes</h2>
+            <p>Default font size (usually 16px in most browsers).</p>
+            <p class="size-px">This text has a font size of 18px.</p>
+            <p class="size-em">This text has a font size of 1.5em (relative to parent).</p>
+            <p class="size-rem">This text has a font size of 1.5rem (relative to root).</p>
+            <p class="size-percent">This text has a font size of 120%.</p>
+            <p class="size-small">This text has a font size of 'small'.</p>
+            <p class="size-large">This text has a font size of 'large'.</p>
+            <p class="size-xx-large">This text has a font size of 'xx-large'.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Font Styles</h2>
+            <p class="style-normal">This text has a normal font style.</p>
+            <p class="style-italic">This text has an italic font style.</p>
+            <p class="style-oblique">This text has an oblique font style (similar to italic, but less supported).</p>
+        </div>
+        
+        <div class="section">
+            <h2>Font Weights</h2>
+            <p class="weight-normal">This text has a normal font weight.</p>
+            <p class="weight-bold">This text has a bold font weight.</p>
+            <p class="weight-bolder">This text has a bolder font weight (relative to parent).</p>
+            <p class="weight-lighter">This text has a lighter font weight (relative to parent).</p>
+        </div>
+        
+        <div class="section">
+            <h2>Text Colors</h2>
+            <p class="color-named">This text uses a named color (red).</p>
+            <p class="color-hex">This text uses a hexadecimal color (#3498db - blue).</p>
+            <p class="color-rgb">This text uses an RGB color (rgb(46, 204, 113) - green).</p>
+            <p class="color-rgba">This text uses an RGBA color with alpha transparency (rgba(231, 76, 60, 0.8) - semi-transparent red).</p>
+            <p class="color-hsl">This text uses an HSL color (hsl(280, 50%, 60%) - purple).</p>
+        </div>
+        
+        <div class="section">
+            <h2>Text Alignment</h2>
+            <p class="align-left">This paragraph is aligned to the left. This is the default text alignment in most Western languages.</p>
+            <p class="align-center">This paragraph is aligned to the center.</p>
+            <p class="align-right">This paragraph is aligned to the right.</p>
+            <p class="align-justify">This paragraph is justified. It creates a straight edge on both sides. The browser adjusts the spacing between words to make all lines the same length.</p>
+        </div>
+        
+        <p><a href="index.html">Back to CSS Basics Index</a></p>
+    </div>
+</body>
+</html> 

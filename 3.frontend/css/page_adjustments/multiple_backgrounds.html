@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Background Images</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            margin: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        /* Element with multiple background images */
+        .multi-bg {
+            height: 400px;
+            margin: 20px 0;
+            padding: 20px;
+            color: white;
+            text-shadow: 1px 1px 3px black;
+            
+            /* Multiple background images with different sizes, positions, and repetition */
+            background-image: 
+                url('https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?text=Top'),
+                url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?text=Middle'),
+                url('https://images.unsplash.com/photo-1508349937151-22b68b72d5b1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?text=Bottom');
+                
+            /* Background sizes for each image (in the same order) */
+            background-size: 
+                100px auto,  /* Width: 100px, Height: auto */
+                contain,     /* Contained within the element */
+                cover;       /* Covers the entire element */
+                
+            /* Background positions for each image */
+            background-position: 
+                top right,  /* First image: top right */
+                center,     /* Second image: center */
+                bottom left; /* Third image: bottom left */
+                
+            /* Background repeat for each image */
+            background-repeat: 
+                no-repeat,  /* First image: don't repeat */
+                repeat-x,   /* Second image: repeat horizontally */
+                no-repeat;  /* Third image: don't repeat */
+                
+            /* Add a background color as the last layer */
+            background-color: #333;
+        }
+        
+        /* Another example with a single image but adjusted size */
+        .bg-size-example {
+            height: 200px;
+            margin: 20px 0;
+            padding: 20px;
+            
+            /* Single background image */
+            background-image: url('https://images.unsplash.com/photo-1508349937151-22b68b72d5b1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?text=Adjustable+Size');
+            
+            /* Different background-size values can be applied */
+            background-size: contain; /* Could be: cover, auto, 100% 100%, 200px auto, etc. */
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Multiple Background Images</h1>
+        
+        <h2>Multiple Background Images with Different Sizes</h2>
+        <div class="multi-bg">
+            <h3>This element has three background images</h3>
+            <p>Notice how each image has different sizing, positioning, and repetition properties.</p>
+            <ul>
+                <li>Top image: 100px width, no-repeat, positioned top-right</li>
+                <li>Middle image: contained, repeating horizontally, positioned center</li>
+                <li>Bottom image: cover, no-repeat, positioned bottom-left</li>
+            </ul>
+        </div>
+        
+        <h2>Background Size Example</h2>
+        <p>The following element has a single background with the 'contain' size property:</p>
+        <div class="bg-size-example"></div>
+        
+        <p>Common background-size values:</p>
+        <ul>
+            <li><code>cover</code>: Scales the image to cover the entire element (may be cropped)</li>
+            <li><code>contain</code>: Scales the image to fit inside the element (may leave empty space)</li>
+            <li><code>auto</code>: Uses the original image size</li>
+            <li><code>100% 100%</code>: Stretches the image to fill the element exactly</li>
+            <li><code>200px 100px</code>: Sets specific width and height</li>
+        </ul>
+    </div>
+</body>
+</html> 

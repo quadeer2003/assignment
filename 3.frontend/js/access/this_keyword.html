@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript 'this' Keyword</title>
+    <style>
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        .container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript 'this' Keyword Example</h1>
+    <p>Click any of the buttons below to make them disappear.</p>
+    
+    <div class="container">
+        <button class="button">Click to Disappear (Method 1)</button>
+        <button class="button">Click to Disappear (Method 2)</button>
+        <button class="button">Click to Disappear (Method 3)</button>
+    </div>
+    
+    <div class="container">
+        <h3>Explanation</h3>
+        <ul id="explanation">
+            <li>When a button is clicked, 'this' refers to the button element that triggered the event.</li>
+            <li>We can use 'this' to manipulate the element that was interacted with.</li>
+            <li>In this example, we're setting the display style property to 'none' to hide the button.</li>
+        </ul>
+        
+        <button id="reset-button">Reset All Buttons</button>
+    </div>
+    
+    <script>
+        // Method 1: Using inline event handler with 'this'
+        document.querySelectorAll('.button')[0].onclick = function() {
+            // 'this' refers to the button element that was clicked
+            this.style.display = 'none';
+            logAction("Method 1 (onclick property)");
+        };
+        
+        // Method 2: Using addEventListener with 'this'
+        document.querySelectorAll('.button')[1].addEventListener('click', function() {
+            // 'this' refers to the button element that was clicked
+            this.style.display = 'none';
+            logAction("Method 2 (addEventListener)");
+        });
+        
+        // Method 3: Using direct inline attribute (added dynamically here)
+        const button3 = document.querySelectorAll('.button')[2];
+        button3.setAttribute('onclick', 'this.style.display = "none"; logAction("Method 3 (inline attribute)");');
+        
+        // Function to log actions
+        function logAction(method) {
+            const explanation = document.getElementById('explanation');
+            const newItem = document.createElement('li');
+            newItem.textContent = `Button hidden using ${method} at ${new Date().toLocaleTimeString()}`;
+            newItem.style.color = '#e74c3c';
+            explanation.appendChild(newItem);
+        }
+        
+        // Reset button functionality
+        document.getElementById('reset-button').addEventListener('click', function() {
+            // Show all buttons again
+            document.querySelectorAll('.button').forEach(button => {
+                button.style.display = '';
+            });
+            
+            // Log the reset action
+            const explanation = document.getElementById('explanation');
+            const newItem = document.createElement('li');
+            newItem.textContent = `All buttons reset at ${new Date().toLocaleTimeString()}`;
+            newItem.style.color = '#3498db';
+            explanation.appendChild(newItem);
+        });
+    </script>
+</body>
+</html> 

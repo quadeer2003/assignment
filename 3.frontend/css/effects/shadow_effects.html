@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Shadow Effects</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        .example {
+            margin: 40px 0;
+        }
+        
+        /* Box Shadow */
+        .box-shadow {
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+            margin: 30px;
+            
+            /* box-shadow: h-offset v-offset blur spread color */
+            box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .box-shadow:hover {
+            cursor: pointer;
+            box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Multiple Box Shadows */
+        .multiple-shadows {
+            width: 200px;
+            height: 200px;
+            background-color: #e74c3c;
+            margin: 30px;
+            
+            /* Multiple shadows separated by commas */
+            box-shadow: 
+                5px 5px 10px rgba(0, 0, 0, 0.3),
+                -5px -5px 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .multiple-shadows:hover {
+            cursor: pointer;
+            box-shadow: 
+                10px 10px 20px rgba(0, 0, 0, 0.5),
+                -10px -10px 20px rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Inset Shadow */
+        .inset-shadow {
+            width: 200px;
+            height: 200px;
+            background-color: #2ecc71;
+            margin: 30px;
+            
+            /* Inset shadow appears inside the element */
+            box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .inset-shadow:hover {
+            cursor: pointer;
+            box-shadow: inset 10px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Text Shadow */
+        .text-shadow {
+            font-size: 36px;
+            font-weight: bold;
+            color: #9b59b6;
+            margin: 30px;
+            
+            /* text-shadow: h-offset v-offset blur color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .text-shadow:hover {
+            cursor: pointer;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Multiple Text Shadows */
+        .multiple-text-shadows {
+            font-size: 36px;
+            font-weight: bold;
+            color: #f39c12;
+            margin: 30px;
+            
+            /* Multiple text shadows separated by commas */
+            text-shadow: 
+                1px 1px 2px black,
+                0 0 10px blue,
+                0 0 5px darkblue;
+        }
+        
+        .multiple-text-shadows:hover {
+            cursor: pointer;
+            text-shadow: 
+                2px 2px 4px black,
+                0 0 20px blue,
+                0 0 10px darkblue;
+        }
+        
+        /* Image Shadow */
+        .image-shadow {
+            width: 200px;
+            height: 200px;
+            margin: 30px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .image-shadow:hover {
+            cursor: pointer;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Shadow Effects</h1>
+        
+        <div class="example">
+            <h2>Box Shadow</h2>
+            <p>Hover over the boxes to see the shadow change and cursor change.</p>
+            
+            <div class="box-shadow"></div>
+            
+            <h3>Multiple Box Shadows</h3>
+            <div class="multiple-shadows"></div>
+            
+            <h3>Inset Shadow (Inner Shadow)</h3>
+            <div class="inset-shadow"></div>
+        </div>
+        
+        <div class="example">
+            <h2>Text Shadow</h2>
+            <p>Hover over the text to see the shadow change.</p>
+            
+            <div class="text-shadow">Text with Shadow</div>
+            
+            <h3>Multiple Text Shadows</h3>
+            <div class="multiple-text-shadows">Multiple Text Shadows</div>
+        </div>
+        
+        <div class="example">
+            <h2>Image with Shadow</h2>
+            <p>Hover over the image to see the shadow change.</p>
+            
+            <img class="image-shadow" src="https://via.placeholder.com/200/333333/ffffff?text=Image" alt="Example image">
+        </div>
+    </div>
+</body>
+</html> 

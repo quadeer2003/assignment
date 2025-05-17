@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Border Properties</title>
+    <style>
+        body {
+            margin: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .example {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        /* Different border styles */
+        .border-styles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .box {
+            width: 150px;
+            height: 100px;
+            margin: 10px;
+            padding: 15px;
+            background-color: #fff;
+            text-align: center;
+        }
+        
+        /* Solid border */
+        .solid {
+            border: 3px solid #3498db;
+        }
+        
+        /* Dashed border */
+        .dashed {
+            border: 3px dashed #e74c3c;
+        }
+        
+        /* Dotted border */
+        .dotted {
+            border: 3px dotted #2ecc71;
+        }
+        
+        /* Double border */
+        .double {
+            border: 3px double #f39c12;
+        }
+        
+        /* Groove border */
+        .groove {
+            border: 3px groove #9b59b6;
+        }
+        
+        /* Ridge border */
+        .ridge {
+            border: 3px ridge #1abc9c;
+        }
+        
+        /* Inset border */
+        .inset {
+            border: 3px inset #34495e;
+        }
+        
+        /* Outset border */
+        .outset {
+            border: 3px outset #e67e22;
+        }
+        
+        /* Different borders on each side */
+        .mixed-borders {
+            margin: 30px auto;
+            width: 400px;
+            height: 200px;
+            background-color: #fff;
+            padding: 20px;
+            
+            /* Different border styles on each side */
+            border-top: 10px solid #3498db;    /* Blue, solid, top */
+            border-right: 10px dashed #e74c3c; /* Red, dashed, right */
+            border-bottom: 10px dotted #2ecc71; /* Green, dotted, bottom */
+            border-left: 10px double #f39c12;  /* Orange, double, left */
+        }
+        
+        /* Boxes with individual border properties */
+        .border-individual {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .custom-box {
+            width: 200px;
+            height: 150px;
+            margin: 15px;
+            padding: 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+        
+        /* Box with different border widths */
+        .width-variations {
+            border-top: 1px solid #3498db;    /* Thin */
+            border-right: 5px solid #3498db;  /* Medium */
+            border-bottom: 10px solid #3498db; /* Thick */
+            border-left: 15px solid #3498db;  /* Very thick */
+        }
+        
+        /* Box with different border colors */
+        .color-variations {
+            border-width: 5px;
+            border-style: solid;
+            border-top-color: #3498db;    /* Blue */
+            border-right-color: #e74c3c;  /* Red */
+            border-bottom-color: #2ecc71; /* Green */
+            border-left-color: #f39c12;   /* Orange */
+        }
+        
+        /* Box with different border styles */
+        .style-variations {
+            border-width: 5px;
+            border-color: #9b59b6;
+            border-top-style: solid;
+            border-right-style: dashed;
+            border-bottom-style: dotted;
+            border-left-style: double;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Border Properties</h1>
+        
+        <div class="example">
+            <h2>Basic Border Styles</h2>
+            <p>CSS provides eight different border styles:</p>
+            
+            <div class="border-styles">
+                <div class="box solid">solid</div>
+                <div class="box dashed">dashed</div>
+                <div class="box dotted">dotted</div>
+                <div class="box double">double</div>
+                <div class="box groove">groove</div>
+                <div class="box ridge">ridge</div>
+                <div class="box inset">inset</div>
+                <div class="box outset">outset</div>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>Different Borders on Each Side</h2>
+            <p>This box has different border styles, colors, and widths on each side:</p>
+            
+            <div class="mixed-borders">
+                <p>Top: 10px solid blue</p>
+                <p>Right: 10px dashed red</p>
+                <p>Bottom: 10px dotted green</p>
+                <p>Left: 10px double orange</p>
+            </div>
+        </div>
+        
+        <div class="example">
+            <h2>Individual Border Properties</h2>
+            <p>You can control width, style, and color separately for each border:</p>
+            
+            <div class="border-individual">
+                <div class="custom-box width-variations">
+                    <p>Different border widths:</p>
+                    <p>1px - 5px - 10px - 15px</p>
+                </div>
+                
+                <div class="custom-box color-variations">
+                    <p>Different border colors</p>
+                    <p>on each side</p>
+                </div>
+                
+                <div class="custom-box style-variations">
+                    <p>Different border styles</p>
+                    <p>on each side</p>
+                </div>
+            </div>
+        </div>
+        
+        <p><a href="index.html">Back to CSS Basics Index</a></p>
+    </div>
+</body>
+</html> 

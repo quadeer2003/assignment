@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Object Prototypes</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .example {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .output {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Adding Properties Using Object Prototypes</h1>
+        <p>This example demonstrates how to extend existing functions by adding properties and methods using object prototypes.</p>
+        
+        <div class="example">
+            <h2>Example 1: Adding methods to built-in objects</h2>
+            <p>Adding a new method to the String prototype that counts occurrences of a substring.</p>
+            <button id="example1-btn">Run Example 1</button>
+            <div id="example1-output" class="output"></div>
+            
+            <script>
+                // Adding a method to String prototype to count occurrences of a substring
+                String.prototype.countOccurrences = function(substring) {
+                    return (this.match(new RegExp(substring, "g")) || []).length;
+                };
+                
+                document.getElementById("example1-btn").addEventListener("click", function() {
+                    const text = "Hello, world! Hello, JavaScript!";
+                    const substring = "Hello";
+                    const count = text.countOccurrences(substring);
+                    
+                    const output = document.getElementById("example1-output");
+                    output.textContent = `Original text: "${text}"\n`;
+                    output.textContent += `Count of "${substring}": ${count}\n`;
+                    output.textContent += `\nThis demonstrates adding a custom method 'countOccurrences' to all String objects.`;
+                });
+            </script>
+        </div>
+        
+        <div class="example">
+            <h2>Example 2: Creating a custom constructor function and extending it</h2>
+            <p>Creating a Person constructor function and extending it with additional properties and methods.</p>
+            <button id="example2-btn">Run Example 2</button>
+            <div id="example2-output" class="output"></div>
+            
+            <script>
+                // Define a constructor function for Person
+                function Person(firstName, lastName, age) {
+                    this.firstName = firstName;
+                    this.lastName = lastName;
+                    this.age = age;
+                }
+                
+                // Add a method to the Person prototype
+                Person.prototype.getFullName = function() {
+                    return `${this.firstName} ${this.lastName}`;
+                };
+                
+                // Add another method to the Person prototype
+                Person.prototype.greet = function() {
+                    return `Hello, my name is ${this.getFullName()}.`;
+                };
+                
+                // Add a property to the Person prototype
+                Person.prototype.species = "Homo Sapiens";
+                
+                document.getElementById("example2-btn").addEventListener("click", function() {
+                    // Create a new Person object
+                    const person = new Person("John", "Doe", 30);
+                    
+                    const output = document.getElementById("example2-output");
+                    output.textContent = `Person: ${JSON.stringify(person)}\n`;
+                    output.textContent += `Full Name: ${person.getFullName()}\n`;
+                    output.textContent += `Greeting: ${person.greet()}\n`;
+                    output.textContent += `Species: ${person.species}\n`;
+                    
+                    // Add more information about what's happening
+                    output.textContent += `\nNote: The 'getFullName', 'greet' methods and 'species' property are all defined on the prototype, not on the individual instance.`;
+                    
+                    // Add a new property to just this instance
+                    person.occupation = "Developer";
+                    output.textContent += `\n\nAdded a property directly to the instance: occupation = "${person.occupation}"`;
+                    
+                    // Show all properties (own and from prototype)
+                    output.textContent += `\n\nAll properties of person:\n`;
+                    for (let prop in person) {
+                        const isOwn = person.hasOwnProperty(prop);
+                        output.textContent += `- ${prop}: ${isOwn ? "Own property" : "Prototype property"}\n`;
+                    }
+                });
+            </script>
+        </div>
+        
+        <div class="example">
+            <h2>Example 3: Extending objects dynamically</h2>
+            <p>Adding methods and properties to an existing object's prototype at runtime.</p>
+            <button id="example3-btn">Run Example 3</button>
+            <div id="example3-output" class="output"></div>
+            
+            <script>
+                // Create a new constructor function
+                function Car(make, model, year) {
+                    this.make = make;
+                    this.model = model;
+                    this.year = year;
+                    this.isRunning = false;
+                }
+                
+                // Add a basic method
+                Car.prototype.getInfo = function() {
+                    return `${this.year} ${this.make} ${this.model}`;
+                };
+                
+                document.getElementById("example3-btn").addEventListener("click", function() {
+                    // Create a car instance
+                    const myCar = new Car("Toyota", "Corolla", 2020);
+                    
+                    const output = document.getElementById("example3-output");
+                    output.textContent = "Initial Car Object:\n";
+                    output.textContent += `Car Info: ${myCar.getInfo()}\n`;
+                    output.textContent += `Running: ${myCar.isRunning}\n\n`;
+                    
+                    // Now let's add more properties and methods to the Car prototype
+                    output.textContent += "Adding new properties and methods to Car prototype...\n\n";
+                    
+                    // Add a property to the prototype
+                    Car.prototype.wheels = 4;
+                    
+                    // Add methods to the prototype
+                    Car.prototype.start = function() {
+                        if (!this.isRunning) {
+                            this.isRunning = true;
+                            return `${this.make} ${this.model} started.`;
+                        } else {
+                            return `${this.make} ${this.model} is already running.`;
+                        }
+                    };
+                    
+                    Car.prototype.stop = function() {
+                        if (this.isRunning) {
+                            this.isRunning = false;
+                            return `${this.make} ${this.model} stopped.`;
+                        } else {
+                            return `${this.make} ${this.model} is already stopped.`;
+                        }
+                    };
+                    
+                    // Use the new properties and methods
+                    output.textContent += `Wheels: ${myCar.wheels}\n`;
+                    output.textContent += `Start car: ${myCar.start()}\n`;
+                    output.textContent += `Running: ${myCar.isRunning}\n`;
+                    output.textContent += `Try to start again: ${myCar.start()}\n`;
+                    output.textContent += `Stop car: ${myCar.stop()}\n`;
+                    output.textContent += `Running: ${myCar.isRunning}\n`;
+                    
+                    // Explanation
+                    output.textContent += `\nAll new cars created with the Car constructor will now have these properties and methods.`;
+                    
+                    // Create a new car to demonstrate
+                    const anotherCar = new Car("Honda", "Civic", 2021);
+                    output.textContent += `\n\nNew car created: ${anotherCar.getInfo()}`;
+                    output.textContent += `\nNew car has wheels property: ${anotherCar.wheels}`;
+                    output.textContent += `\nNew car can be started: ${anotherCar.start()}`;
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html> 

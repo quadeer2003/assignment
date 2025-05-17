@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Counter</title>
+    <style>
+        .counter-container {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 500px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .counter-display {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #333;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        .btn-reset {
+            background-color: #f44336;
+        }
+        
+        .btn-reset:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+        <h1>JavaScript Counter</h1>
+        <p>Click the "Count" button to increment the counter.</p>
+        
+        <div class="counter-display" id="counter">0</div>
+        
+        <div class="button-group">
+            <button id="count-btn" class="btn">Count</button>
+            <button id="reset-btn" class="btn btn-reset">Reset</button>
+        </div>
+        
+        <div id="click-history">
+            <h3>Click History</h3>
+            <ul id="history-list"></ul>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize counter
+        let count = 0;
+        
+        // Get DOM elements
+        const counterDisplay = document.getElementById('counter');
+        const countButton = document.getElementById('count-btn');
+        const resetButton = document.getElementById('reset-btn');
+        const historyList = document.getElementById('history-list');
+        
+        // Function to update counter display
+        function updateDisplay() {
+            counterDisplay.textContent = count;
+        }
+        
+        // Function to add entry to click history
+        function addToHistory(action) {
+            const timestamp = new Date().toLocaleTimeString();
+            const historyItem = document.createElement('li');
+            historyItem.textContent = `${action} at ${timestamp}`;
+            historyList.appendChild(historyItem);
+            
+            // Limit history to last 5 items
+            if (historyList.children.length > 5) {
+                historyList.removeChild(historyList.children[0]);
+            }
+        }
+        
+        // Event listener for the count button
+        countButton.addEventListener('click', function() {
+            // Increment counter
+            count++;
+            
+            // Update display
+            updateDisplay();
+            
+            // Add to history
+            addToHistory(`Incremented to ${count}`);
+        });
+        
+        // Event listener for the reset button
+        resetButton.addEventListener('click', function() {
+            // Reset counter
+            count = 0;
+            
+            // Update display
+            updateDisplay();
+            
+            // Add to history
+            addToHistory('Reset to 0');
+        });
+    </script>
+</body>
+</html> 

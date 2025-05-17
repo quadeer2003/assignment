@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Background Properties</title>
+    <style>
+        /* Setting the background color and fixed background image for the body */
+        body {
+            /* Background color applied first */
+            background-color: #e6f7ff; /* Light blue */
+            
+            /* Background image with fixed positioning */
+            background-image: url('https://images.unsplash.com/photo-1501560379-05951a742668?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            
+            /* Fixed positioning so the image doesn't scroll with content */
+            background-attachment: fixed;
+            
+            /* Control size of the background image */
+            background-size: cover; /* Cover the entire viewport */
+            
+            /* Control the image position */
+            background-position: center;
+            
+            /* Prevent repeating of the image */
+            background-repeat: no-repeat;
+            
+            /* Basic text styling */
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        /* Container for content */
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        /* Space for scrolling to demonstrate fixed background */
+        .scroll-space {
+            height: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>CSS Background Properties</h1>
+        
+        <p>This page demonstrates the following CSS background properties:</p>
+        <ul>
+            <li><strong>background-color</strong>: Setting a solid color as background</li>
+            <li><strong>background-image</strong>: Adding an image as background</li>
+            <li><strong>background-attachment</strong>: Set to fixed so it doesn't scroll with content</li>
+            <li><strong>background-size</strong>: Set to cover to fill the viewport</li>
+        </ul>
+        
+        <p>Scroll down to see how the background image remains fixed while the content scrolls.</p>
+        
+        <div class="scroll-space"></div>
+        
+        <p>Notice how the background image remained fixed while you scrolled down!</p>
+        
+        <p><a href="index.html">Back to CSS Basics Index</a></p>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Visibility and Display</title>
+    <style>
+        /* Visibility Properties */
+        .visible {
+            visibility: visible;
+            background-color: #e6f7ff;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        .hidden {
+            visibility: hidden;
+            background-color: #f9e6ff;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        .collapse {
+            visibility: collapse;
+            background-color: #fff7e6;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        /* Display Properties */
+        .display-none {
+            display: none;
+            background-color: #e6fff7;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        .display-inline {
+            display: inline;
+            background-color: #ffe6e6;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        .display-block {
+            display: block;
+            background-color: #e6ffec;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        .display-contents {
+            display: contents;
+            background-color: #f0e6ff;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        .display-list-item {
+            display: list-item;
+            background-color: #fff9e6;
+            padding: 10px;
+            margin: 5px 5px 5px 25px;
+        }
+        
+        /* Section styles */
+        .section {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Visibility and Display Properties</h1>
+    
+    <div class="section">
+        <h2>Visibility Properties</h2>
+        
+        <div class="visible">
+            This element has <code>visibility: visible</code>. This is the default value and the element is visible.
+        </div>
+        
+        <div class="hidden">
+            This element has <code>visibility: hidden</code>. It takes up space but is not visible.
+        </div>
+        
+        <p>Note: Below is an element with <code>visibility: collapse</code>. For non-table elements, it works like <code>hidden</code>.</p>
+        <div class="collapse">
+            This element has <code>visibility: collapse</code>.
+        </div>
+        
+        <table border="1">
+            <tr>
+                <td>Normal row</td>
+                <td>This is visible</td>
+            </tr>
+            <tr class="collapse">
+                <td>Collapsed row</td>
+                <td>This is collapsed (mainly for table rows)</td>
+            </tr>
+            <tr>
+                <td>Another normal row</td>
+                <td>This is visible too</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="section">
+        <h2>Display Properties</h2>
+        
+        <div class="display-none">
+            This element has <code>display: none</code>. It does not take up space and is not visible.
+        </div>
+        
+        <div>Before inline element</div>
+        <div class="display-inline">
+            This element has <code>display: inline</code>. It only takes up as much width as necessary.
+        </div>
+        <div>After inline element</div>
+        
+        <div class="display-block">
+            This element has <code>display: block</code>. It takes up the full width available.
+        </div>
+        
+        <div>Before contents element - <div class="display-contents">
+            This element has <code>display: contents</code>. The box itself is not generated, but its children are.
+        </div> - After contents element</div>
+        
+        <div class="display-list-item">
+            This element has <code>display: list-item</code>. It generates a box and a marker box (like a bullet).
+        </div>
+    </div>
+</body>
+</html> 

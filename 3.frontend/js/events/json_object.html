@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Object with Dot Notation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        
+        code {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        
+        #output {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            min-height: 50px;
+            border: 1px solid #ddd;
+        }
+        
+        .property-item {
+            margin: 5px 0;
+            padding: 8px;
+            background-color: #e9f7ef;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Object with Dot Notation</h1>
+    <p>This example demonstrates how to create a JSON object and access its properties using dot notation.</p>
+    
+    <div class="section">
+        <h2>JSON Object Definition</h2>
+        <p>Here's a JSON object representing a person:</p>
+        <pre><code>const person = {
+    "firstName": "John",
+    "lastName": "Doe",
+    "age": 30,
+    "email": "john.doe@example.com",
+    "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "NY",
+        "zipCode": "10001"
+    },
+    "phoneNumbers": [
+        {
+            "type": "home",
+            "number": "212-555-1234"
+        },
+        {
+            "type": "work",
+            "number": "646-555-5678"
+        }
+    ],
+    "isEmployed": true,
+    "skills": ["JavaScript", "HTML", "CSS", "React"]
+};</code></pre>
+        
+        <button id="show-object-btn">Show JSON Object</button>
+        <div id="output"></div>
+    </div>
+    
+    <div class="section">
+        <h2>Accessing Properties with Dot Notation</h2>
+        <p>Select a property to access:</p>
+        
+        <div>
+            <button class="property-btn" data-property="firstName">person.firstName</button>
+            <button class="property-btn" data-property="lastName">person.lastName</button>
+            <button class="property-btn" data-property="age">person.age</button>
+            <button class="property-btn" data-property="email">person.email</button>
+            <button class="property-btn" data-property="isEmployed">person.isEmployed</button>
+        </div>
+        
+        <h3>Accessing Nested Objects</h3>
+        <div>
+            <button class="property-btn" data-property="address.street">person.address.street</button>
+            <button class="property-btn" data-property="address.city">person.address.city</button>
+            <button class="property-btn" data-property="address.state">person.address.state</button>
+            <button class="property-btn" data-property="address.zipCode">person.address.zipCode</button>
+        </div>
+        
+        <h3>Accessing Array Elements</h3>
+        <div>
+            <button class="property-btn" data-property="skills[0]">person.skills[0]</button>
+            <button class="property-btn" data-property="skills[1]">person.skills[1]</button>
+            <button class="property-btn" data-property="skills[2]">person.skills[2]</button>
+            <button class="property-btn" data-property="skills[3]">person.skills[3]</button>
+        </div>
+        
+        <h3>Accessing Objects in Arrays</h3>
+        <div>
+            <button class="property-btn" data-property="phoneNumbers[0].type">person.phoneNumbers[0].type</button>
+            <button class="property-btn" data-property="phoneNumbers[0].number">person.phoneNumbers[0].number</button>
+            <button class="property-btn" data-property="phoneNumbers[1].type">person.phoneNumbers[1].type</button>
+            <button class="property-btn" data-property="phoneNumbers[1].number">person.phoneNumbers[1].number</button>
+        </div>
+    </div>
+    
+    <script>
+        // Define the JSON object
+        const person = {
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": 30,
+            "email": "john.doe@example.com",
+            "address": {
+                "street": "123 Main St",
+                "city": "New York",
+                "state": "NY",
+                "zipCode": "10001"
+            },
+            "phoneNumbers": [
+                {
+                    "type": "home",
+                    "number": "212-555-1234"
+                },
+                {
+                    "type": "work",
+                    "number": "646-555-5678"
+                }
+            ],
+            "isEmployed": true,
+            "skills": ["JavaScript", "HTML", "CSS", "React"]
+        };
+        
+        // Function to display the entire JSON object
+        document.getElementById("show-object-btn").addEventListener("click", function() {
+            const output = document.getElementById("output");
+            output.innerHTML = `<pre>${JSON.stringify(person, null, 4)}</pre>`;
+        });
+        
+        // Function to access properties using dot notation
+        function accessProperty(propertyPath) {
+            // Handle array notation like "skills[0]"
+            if (propertyPath.includes("[")) {
+                // Split into parts before and after the bracket
+                const parts = propertyPath.split(/[\[\]]+/);
+                const propName = parts[0];
+                const index = parseInt(parts[1]);
+                
+                if (parts.length > 2 && parts[2].startsWith(".")) {
+                    // Handle case like "phoneNumbers[0].type"
+                    const nestedProp = parts[2].substring(1);
+                    return person[propName][index][nestedProp];
+                } else {
+                    // Handle case like "skills[0]"
+                    return person[propName][index];
+                }
+            } else if (propertyPath.includes(".")) {
+                // Handle nested properties like "address.street"
+                const parts = propertyPath.split(".");
+                return person[parts[0]][parts[1]];
+            } else {
+                // Handle simple properties like "firstName"
+                return person[propertyPath];
+            }
+        }
+        
+        // Add event listeners to property buttons
+        document.querySelectorAll(".property-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                const propertyPath = this.getAttribute("data-property");
+                const propertyValue = accessProperty(propertyPath);
+                
+                const output = document.getElementById("output");
+                output.innerHTML = `
+                    <div class="property-item">
+                        <strong>Property:</strong> ${propertyPath}<br>
+                        <strong>Value:</strong> ${JSON.stringify(propertyValue)}
+                    </div>
+                    <div class="property-item">
+                        <strong>JavaScript Code:</strong><br>
+                        <code>const value = person.${propertyPath.replace(/\[(\d+)\]/g, "[$1]")};</code>
+                    </div>
+                `;
+            });
+        });
+    </script>
+</body>
+</html> 

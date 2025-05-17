@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mohammad Abdul Quadeer - Portfolio with Pseudo Effects</title>
+    <style>
+        /* Pseudo-class examples */
+        a:hover {
+            color: red;
+        }
+        
+        button:active {
+            background-color: green;
+        }
+        
+        li:first-child {
+            font-weight: bold;
+        }
+        
+        li:last-child {
+            font-style: italic;
+        }
+        
+        input:focus {
+            background-color: lightblue;
+        }
+        
+        /* Pseudo-element examples */
+        p::first-letter {
+            font-size: 150%;
+            font-weight: bold;
+        }
+        
+        p::first-line {
+            text-transform: uppercase;
+        }
+        
+        h2::before {
+            content: "→ ";
+        }
+        
+        h2::after {
+            content: " ←";
+        }
+    </style>
+</head>
+<body>
+    <h1>Mohammad Abdul Quadeer</h1>
+    <h2>Full Stack Developer Portfolio</h2>
+    
+    <h2>About Me</h2>
+    <p>I'm a software developer ⚙️, curious about building effective and user-friendly solutions. I enjoy exploring open-source projects, troubleshooting code, and learning through collaboration with the tech community.</p>
+    
+    <h3>Education:</h3>
+    <p>MJCET - Computer Science Engineering</p>
+    
+    <h2>My Skills</h2>
+    <ul>
+        <li>Full Stack Development</li>
+        <li>Problem Solving</li>
+        <li>Hackathon Participant</li>
+        <li>Open Source Contributor</li>
+    </ul>
+    
+    <h2>Achievements</h2>
+    <p>3x Hackathon Winner with projects focusing on innovative solutions.</p>
+    
+    <h2>Contact Me</h2>
+    <p>Enter your message: <input type="text" placeholder="Type your message here"></p>
+    <p>Click this <button>Send Message</button> button to contact me.</p>
+    
+    <p>Check out my <a href="#">portfolio</a> for more projects (hover over this link).</p>
+    
+    <h3>Notice the special effects:</h3>
+    <ul>
+        <li>Hover over links to see color change (pseudo-class)</li>
+        <li>Click and hold the button to see it change (pseudo-class)</li>
+        <li>Notice the first letter of each paragraph (pseudo-element)</li>
+        <li>Look at the arrows before and after headings (pseudo-element)</li>
+        <li>The first and last items in lists have special formatting (pseudo-class)</li>
+    </ul>
+</body>
+</html> 

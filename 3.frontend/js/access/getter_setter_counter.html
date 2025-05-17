@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter with Getters and Setters</title>
+    <style>
+        .counter-container {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 500px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .counter-display {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #333;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        .btn-decrement {
+            background-color: #2196F3;
+        }
+        
+        .btn-decrement:hover {
+            background-color: #0b7dda;
+        }
+        
+        .btn-reset {
+            background-color: #f44336;
+        }
+        
+        .btn-reset:hover {
+            background-color: #d32f2f;
+        }
+        
+        .log-container {
+            margin-top: 20px;
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+        <h1>Counter with Getters and Setters</h1>
+        <p>This counter uses JavaScript getter and setter accessors to control the counter value.</p>
+        
+        <div class="counter-display" id="counter-display">0</div>
+        
+        <div class="button-group">
+            <button id="increment-btn" class="btn">Increment</button>
+            <button id="decrement-btn" class="btn btn-decrement">Decrement</button>
+            <button id="reset-btn" class="btn btn-reset">Reset</button>
+        </div>
+        
+        <div class="log-container">
+            <h3>Counter Log</h3>
+            <ul id="log-list"></ul>
+        </div>
+    </div>
+    
+    <script>
+        // Counter object with getter and setter
+        const counterObj = {
+            // Private variable (using closure)
+            _count: 0,
+            
+            // Getter for count
+            get count() {
+                this.logAction('Get count value: ' + this._count);
+                return this._count;
+            },
+            
+            // Setter for count with validation
+            set count(value) {
+                if (typeof value !== 'number') {
+                    this.logAction('Error: Count must be a number');
+                    throw new Error('Count must be a number');
+                }
+                
+                if (value < 0) {
+                    this.logAction('Error: Count cannot be negative');
+                    throw new Error('Count cannot be negative');
+                }
+                
+                this.logAction(`Set count value: ${this._count} -> ${value}`);
+                this._count = value;
+                this.updateDisplay();
+            },
+            
+            // Method to increment count
+            increment() {
+                this.count = this._count + 1;
+            },
+            
+            // Method to decrement count (with validation in the setter)
+            decrement() {
+                try {
+                    this.count = this._count - 1;
+                } catch (error) {
+                    // Error will be thrown by setter if count would become negative
+                    console.error(error.message);
+                }
+            },
+            
+            // Method to reset count
+            reset() {
+                this.count = 0;
+            },
+            
+            // Method to update the display
+            updateDisplay() {
+                document.getElementById('counter-display').textContent = this._count;
+            },
+            
+            // Method to log actions
+            logAction(message) {
+                const logList = document.getElementById('log-list');
+                const logItem = document.createElement('li');
+                logItem.textContent = `${message} [${new Date().toLocaleTimeString()}]`;
+                logList.appendChild(logItem);
+                
+                // Scroll to bottom of log
+                const logContainer = document.querySelector('.log-container');
+                logContainer.scrollTop = logContainer.scrollHeight;
+                
+                // Limit log entries
+                if (logList.children.length > 10) {
+                    logList.removeChild(logList.firstChild);
+                }
+            }
+        };
+        
+        // Initialize display
+        counterObj.updateDisplay();
+        
+        // Set up event listeners
+        document.getElementById('increment-btn').addEventListener('click', function() {
+            counterObj.increment();
+        });
+        
+        document.getElementById('decrement-btn').addEventListener('click', function() {
+            counterObj.decrement();
+        });
+        
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            counterObj.reset();
+        });
+        
+        // Log initial state
+        counterObj.logAction('Counter initialized');
+    </script>
+</body>
+</html> 

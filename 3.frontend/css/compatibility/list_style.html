@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS List Style Types</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .list-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        
+        /* Ordered List Style Types */
+        .decimal {
+            list-style-type: decimal;
+        }
+        
+        .decimal-leading-zero {
+            list-style-type: decimal-leading-zero;
+        }
+        
+        .lower-roman {
+            list-style-type: lower-roman;
+        }
+        
+        .upper-roman {
+            list-style-type: upper-roman;
+        }
+        
+        .lower-alpha {
+            list-style-type: lower-alpha;
+        }
+        
+        .upper-alpha {
+            list-style-type: upper-alpha;
+        }
+        
+        /* Unordered List Style Types */
+        .disc {
+            list-style-type: disc;
+        }
+        
+        .circle {
+            list-style-type: circle;
+        }
+        
+        .square {
+            list-style-type: square;
+        }
+        
+        .none {
+            list-style-type: none;
+        }
+        
+        /* Custom Style with list-style-image */
+        .custom-image {
+            list-style-image: url('https://via.placeholder.com/16/3498db/ffffff?text=•');
+        }
+        
+        /* List Style Position */
+        .outside {
+            list-style-position: outside;
+        }
+        
+        .inside {
+            list-style-position: inside;
+        }
+        
+        /* List Style Shorthand */
+        .shorthand {
+            list-style: square inside;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS List Style Types</h1>
+        
+        <div class="list-section">
+            <h2>Ordered List Style Types</h2>
+            
+            <div class="list-examples">
+                <h3>decimal (Default for ol)</h3>
+                <ol class="decimal">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                    <li>Item Four</li>
+                </ol>
+                
+                <h3>decimal-leading-zero</h3>
+                <ol class="decimal-leading-zero">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                    <li>Item Four</li>
+                </ol>
+                
+                <h3>lower-roman</h3>
+                <ol class="lower-roman">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                    <li>Item Four</li>
+                </ol>
+                
+                <h3>upper-roman</h3>
+                <ol class="upper-roman">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                    <li>Item Four</li>
+                </ol>
+                
+                <h3>lower-alpha</h3>
+                <ol class="lower-alpha">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                    <li>Item Four</li>
+                </ol>
+                
+                <h3>upper-alpha</h3>
+                <ol class="upper-alpha">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                    <li>Item Four</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="list-section">
+            <h2>Unordered List Style Types</h2>
+            
+            <div class="list-examples">
+                <h3>disc (Default for ul)</h3>
+                <ul class="disc">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                    <li>Item Four</li>
+                </ul>
+                
+                <h3>circle</h3>
+                <ul class="circle">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                    <li>Item Four</li>
+                </ul>
+                
+                <h3>square</h3>
+                <ul class="square">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                    <li>Item Four</li>
+                </ul>
+                
+                <h3>none</h3>
+                <ul class="none">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                    <li>Item Four</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="list-section">
+            <h2>List Style Position</h2>
+            
+            <div class="list-examples">
+                <h3>outside (Default)</h3>
+                <ul class="outside">
+                    <li>This is the outside position. The bullet appears outside the block of text. If the text wraps to a new line, it will align with the text above, not with the bullet.</li>
+                    <li>Another item with longer text to demonstrate wrapping behavior with the outside position.</li>
+                </ul>
+                
+                <h3>inside</h3>
+                <ul class="inside">
+                    <li>This is the inside position. The bullet appears inside the block of text. If the text wraps to a new line, it will align with the bullet.</li>
+                    <li>Another item with longer text to demonstrate wrapping behavior with the inside position.</li>
+                </ul>
+                
+                <h3>Shorthand (square inside)</h3>
+                <ul class="shorthand">
+                    <li>This uses the list-style shorthand property to set both type and position.</li>
+                    <li>Another item with longer text to demonstrate the shorthand property behavior.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

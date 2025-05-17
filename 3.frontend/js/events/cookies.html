@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Cookies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 5px;
+            width: 200px;
+        }
+        
+        #cookie-display {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+            min-height: 50px;
+        }
+        
+        .cookie-info {
+            margin: 5px 0;
+            padding: 8px;
+            background-color: #e9f7ef;
+            border-radius: 4px;
+        }
+        
+        .status {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .status.success {
+            color: #2ecc71;
+        }
+        
+        .status.error {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Cookie Management</h1>
+    <p>This example demonstrates how to set, get, and check cookies using JavaScript.</p>
+    
+    <div class="section">
+        <h2>Set a Cookie</h2>
+        <div>
+            <label for="cookie-name">Cookie Name:</label>
+            <input type="text" id="cookie-name" placeholder="Enter cookie name">
+        </div>
+        <div>
+            <label for="cookie-value">Cookie Value:</label>
+            <input type="text" id="cookie-value" placeholder="Enter cookie value">
+        </div>
+        <div>
+            <label for="cookie-days">Expiry (days):</label>
+            <input type="text" id="cookie-days" placeholder="Enter days (optional)" value="7">
+        </div>
+        <button id="set-cookie-btn">Set Cookie</button>
+        <div id="set-cookie-status" class="status"></div>
+    </div>
+    
+    <div class="section">
+        <h2>Get a Cookie</h2>
+        <div>
+            <label for="get-cookie-name">Cookie Name:</label>
+            <input type="text" id="get-cookie-name" placeholder="Enter cookie name to get">
+        </div>
+        <button id="get-cookie-btn">Get Cookie</button>
+        <div id="get-cookie-value" class="status"></div>
+    </div>
+    
+    <div class="section">
+        <h2>Check if Cookie Exists</h2>
+        <div>
+            <label for="check-cookie-name">Cookie Name:</label>
+            <input type="text" id="check-cookie-name" placeholder="Enter cookie name to check">
+        </div>
+        <button id="check-cookie-btn">Check Cookie</button>
+        <div id="check-cookie-status" class="status"></div>
+    </div>
+    
+    <div class="section">
+        <h2>All Cookies</h2>
+        <button id="display-cookies-btn">Display All Cookies</button>
+        <button id="clear-cookies-btn">Clear All Cookies</button>
+        <div id="cookie-display"></div>
+    </div>
+    
+    <script>
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            let expires = "";
+            
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            
+            document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+            return true;
+        }
+        
+        // Function to get a cookie
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1, c.length);
+                }
+                
+                if (c.indexOf(nameEQ) === 0) {
+                    return decodeURIComponent(c.substring(nameEQ.length, c.length));
+                }
+            }
+            
+            return null;
+        }
+        
+        // Function to check if a cookie exists
+        function checkCookie(name) {
+            return getCookie(name) !== null;
+        }
+        
+        // Function to delete a cookie
+        function deleteCookie(name) {
+            setCookie(name, "", -1);
+        }
+        
+        // Function to display all cookies
+        function displayAllCookies() {
+            const cookieDisplay = document.getElementById("cookie-display");
+            cookieDisplay.innerHTML = "";
+            
+            const cookies = document.cookie.split(';');
+            
+            if (cookies.length === 1 && cookies[0] === "") {
+                cookieDisplay.innerHTML = "<p>No cookies found.</p>";
+                return;
+            }
+            
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                if (cookie === "") continue;
+                
+                const equalPos = cookie.indexOf('=');
+                
+                if (equalPos > 0) {
+                    const name = cookie.substring(0, equalPos);
+                    const value = decodeURIComponent(cookie.substring(equalPos + 1));
+                    
+                    const cookieInfo = document.createElement("div");
+                    cookieInfo.className = "cookie-info";
+                    cookieInfo.innerHTML = `<strong>${name}</strong>: ${value}`;
+                    
+                    cookieDisplay.appendChild(cookieInfo);
+                }
+            }
+        }
+        
+        // Function to clear all cookies
+        function clearAllCookies() {
+            const cookies = document.cookie.split(";");
+            
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i];
+                const eqPos = cookie.indexOf("=");
+                const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+            }
+            
+            displayAllCookies();
+            return true;
+        }
+        
+        // Set Cookie Button
+        document.getElementById("set-cookie-btn").addEventListener("click", function() {
+            const name = document.getElementById("cookie-name").value.trim();
+            const value = document.getElementById("cookie-value").value.trim();
+            const days = document.getElementById("cookie-days").value.trim();
+            
+            const statusElem = document.getElementById("set-cookie-status");
+            
+            if (name === "" || value === "") {
+                statusElem.textContent = "Error: Name and value are required.";
+                statusElem.className = "status error";
+                return;
+            }
+            
+            const daysValue = days === "" ? null : parseInt(days);
+            
+            if (setCookie(name, value, daysValue)) {
+                statusElem.textContent = `Success: Cookie '${name}' has been set.`;
+                statusElem.className = "status success";
+                displayAllCookies();
+            } else {
+                statusElem.textContent = "Error: Failed to set cookie.";
+                statusElem.className = "status error";
+            }
+        });
+        
+        // Get Cookie Button
+        document.getElementById("get-cookie-btn").addEventListener("click", function() {
+            const name = document.getElementById("get-cookie-name").value.trim();
+            const valueElem = document.getElementById("get-cookie-value");
+            
+            if (name === "") {
+                valueElem.textContent = "Error: Please enter a cookie name.";
+                valueElem.className = "status error";
+                return;
+            }
+            
+            const value = getCookie(name);
+            
+            if (value !== null) {
+                valueElem.textContent = `Value: ${value}`;
+                valueElem.className = "status success";
+            } else {
+                valueElem.textContent = `Cookie '${name}' not found.`;
+                valueElem.className = "status error";
+            }
+        });
+        
+        // Check Cookie Button
+        document.getElementById("check-cookie-btn").addEventListener("click", function() {
+            const name = document.getElementById("check-cookie-name").value.trim();
+            const statusElem = document.getElementById("check-cookie-status");
+            
+            if (name === "") {
+                statusElem.textContent = "Error: Please enter a cookie name.";
+                statusElem.className = "status error";
+                return;
+            }
+            
+            if (checkCookie(name)) {
+                statusElem.textContent = `Cookie '${name}' exists.`;
+                statusElem.className = "status success";
+            } else {
+                statusElem.textContent = `Cookie '${name}' does not exist.`;
+                statusElem.className = "status error";
+            }
+        });
+        
+        // Display Cookies Button
+        document.getElementById("display-cookies-btn").addEventListener("click", function() {
+            displayAllCookies();
+        });
+        
+        // Clear Cookies Button
+        document.getElementById("clear-cookies-btn").addEventListener("click", function() {
+            if (clearAllCookies()) {
+                document.getElementById("cookie-display").innerHTML = "<p>All cookies have been cleared.</p>";
+            }
+        });
+        
+        // Display cookies when page loads
+        displayAllCookies();
+    </script>
+</body>
+</html> 

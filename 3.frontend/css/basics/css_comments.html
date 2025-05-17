@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Comments Demonstration</title>
+    <style>
+        /* This is a CSS comment */
+        body {
+            font-family: Arial, sans-serif;
+            /* This is how you can comment out specific declarations
+            background-color: yellow;
+            */
+        }
+        
+        /* 
+         * Multi-line comment for major sections
+         * =====================================
+         * The following styles apply to the header section
+         */
+        h1 {
+            color: #4a90e2; /* Blue color for the heading */
+        }
+        
+        /* Comments are useful for organizing your CSS */
+        p {
+            line-height: 1.6; /* Improved readability */
+        }
+        
+        /* Comments for explaining complex selectors */
+        /* This targets paragraphs within the .example class */
+        .example p {
+            color: #2ecc71; /* Green text color */
+        }
+        
+        /* Comment for browser compatibility notes */
+        /* 
+         * Note: The following uses flexbox which might not work
+         * perfectly in very old browsers like IE9 and below
+         */
+        .container {
+            display: flex;
+        }
+        
+        /* Comments for TODO items that need addressing later */
+        /* TODO: Refine these styles for mobile devices */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #e74c3c; /* Red background */
+        }
+        
+        /* Comments explaining complex calculations */
+        .calculated {
+            /* Width calculation: 
+             * 100% - 40px (for the margins on both sides)
+             */
+            width: calc(100% - 40px);
+            margin: 0 20px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Comments Demonstration</h1>
+    
+    <div class="calculated">
+        <p>This page demonstrates how to use comments in CSS. Open the page source to see the different ways comments are used in the stylesheet.</p>
+        
+        <p>CSS comments are important for:</p>
+        <ul>
+            <li>Documenting your code</li>
+            <li>Temporarily disabling CSS rules</li>
+            <li>Organizing sections of your stylesheet</li>
+            <li>Adding reminders and TODOs</li>
+            <li>Explaining complex selectors or calculations</li>
+        </ul>
+    </div>
+    
+    <div class="example">
+        <p>This paragraph has special styling defined with commented CSS rules.</p>
+    </div>
+    
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    
+    <p><a href="index.html">Back to CSS Basics Index</a></p>
+</body>
+</html> 

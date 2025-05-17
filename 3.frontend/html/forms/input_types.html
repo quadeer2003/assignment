@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Input Types</title>
+</head>
+<body>
+    <h1>Basic Input Types</h1>
+    <p>This form demonstrates various basic input types: text, password, submit, reset, radio, checkbox, and button.</p>
+
+    <form action="#" method="get">
+        <fieldset>
+            <legend>User Information</legend>
+            
+            <!-- Text input -->
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <br>
+            
+            <!-- Password input -->
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <br>
+            
+            <!-- Radio buttons -->
+            <div>
+                <p>Gender:</p>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+            <br>
+            
+            <!-- Checkboxes -->
+            <div>
+                <p>Interests:</p>
+                <input type="checkbox" id="sports" name="interest" value="sports">
+                <label for="sports">Sports</label>
+                
+                <input type="checkbox" id="music" name="interest" value="music">
+                <label for="music">Music</label>
+                
+                <input type="checkbox" id="reading" name="interest" value="reading">
+                <label for="reading">Reading</label>
+                
+                <input type="checkbox" id="coding" name="interest" value="coding">
+                <label for="coding">Coding</label>
+            </div>
+            <br>
+            
+            <!-- Button input -->
+            <div>
+                <input type="button" value="Click Me" onclick="alert('Button clicked!')">
+            </div>
+            <br>
+            
+            <!-- Submit and Reset buttons -->
+            <div>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset Form">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html> 

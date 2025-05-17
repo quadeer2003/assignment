@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Table Layout</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        /* Table with table-layout: auto (default) */
+        .table-auto {
+            table-layout: auto;
+        }
+        
+        /* Table with table-layout: fixed */
+        .table-fixed {
+            table-layout: fixed;
+        }
+        
+        /* For demonstration purposes */
+        .long-content {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Table Layout</h1>
+        
+        <div class="section">
+            <h2>table-layout: auto (Default)</h2>
+            <p>With <code>table-layout: auto</code>, the column widths are determined by the content within them. The table takes into account all of the content before rendering the layout.</p>
+            
+            <table class="table-auto">
+                <tr>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                </tr>
+                <tr>
+                    <td>Short content</td>
+                    <td class="long-content">This cell has a lot more content which will cause this column to be wider when table-layout is set to auto. The browser needs to analyze all content before determining the column widths.</td>
+                    <td>Short content</td>
+                </tr>
+                <tr>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>table-layout: fixed</h2>
+            <p>With <code>table-layout: fixed</code>, the column widths are determined by the width of the table and the width of the columns in the first row. The content does not affect the column width.</p>
+            
+            <table class="table-fixed">
+                <tr>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                </tr>
+                <tr>
+                    <td>Short content</td>
+                    <td class="long-content">This cell has a lot more content which will NOT cause this column to be wider when table-layout is set to fixed. The browser determines column widths based on the first row only. Long content will be truncated or wrapped.</td>
+                    <td>Short content</td>
+                </tr>
+                <tr>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Key Differences</h2>
+            <ul>
+                <li><strong>table-layout: auto</strong>
+                    <ul>
+                        <li>The browser needs to examine all table content before determining column widths</li>
+                        <li>Column widths are based on the content</li>
+                        <li>Slower rendering for large tables</li>
+                        <li>More responsive to content changes</li>
+                    </ul>
+                </li>
+                <li><strong>table-layout: fixed</strong>
+                    <ul>
+                        <li>Only the first row is used to determine column widths</li>
+                        <li>Column widths are based on column settings or are evenly distributed</li>
+                        <li>Faster rendering for large tables</li>
+                        <li>Better for controlled layouts</li>
+                        <li>May truncate or wrap content that doesn't fit</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

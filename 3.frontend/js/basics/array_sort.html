@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sort Fruits Array</title>
+</head>
+<body>
+    <h1>Fruit Sorter</h1>
+    <p>Click the button to sort the fruits in descending order.</p>
+    
+    <div id="fruits-container">
+        <p>Original Fruit List:</p>
+        <ul id="fruits-list"></ul>
+    </div>
+    
+    <button id="sort-button">Sort Fruits (Descending)</button>
+    
+    <script>
+        // Array of fruit names
+        const fruits = ["Apple", "Orange", "Banana", "Mango", "Strawberry", "Pineapple", "Kiwi", "Watermelon"];
+        
+        // Function to display fruits in the list
+        function displayFruits(fruitsArray) {
+            const fruitsList = document.getElementById("fruits-list");
+            fruitsList.innerHTML = ""; // Clear existing list
+            
+            // Add each fruit to the list
+            fruitsArray.forEach(fruit => {
+                const listItem = document.createElement("li");
+                listItem.textContent = fruit;
+                fruitsList.appendChild(listItem);
+            });
+        }
+        
+        // Display the original list when page loads
+        displayFruits(fruits);
+        
+        // Add click event listener to the button
+        document.getElementById("sort-button").addEventListener("click", function() {
+            // Create a copy of the array to avoid modifying the original
+            const sortedFruits = [...fruits];
+            
+            // Sort in descending order (reverse alphabetical)
+            sortedFruits.sort((a, b) => {
+                if (a > b) return -1;
+                if (a < b) return 1;
+                return 0;
+            });
+            
+            // Alternative shorter syntax for descending sort:
+            // sortedFruits.sort().reverse();
+            
+            // Display the sorted fruits
+            displayFruits(sortedFruits);
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Position Properties</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            height: 2000px; /* Make the page long to demonstrate fixed and sticky positioning */
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto 200px;
+            padding: 20px;
+            border: 1px dashed #ccc;
+            position: relative; /* For absolute positioning reference */
+        }
+        
+        .position-box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Static position (default) */
+        .static {
+            position: static;
+            background-color: #3498db;
+        }
+        
+        /* Relative position (offset from normal position) */
+        .relative {
+            position: relative;
+            background-color: #2ecc71;
+            top: 20px;
+            left: 20px;
+        }
+        
+        /* Absolute position (positioned relative to nearest positioned ancestor) */
+        .absolute {
+            position: absolute;
+            background-color: #e74c3c;
+            top: 150px;
+            right: 20px;
+        }
+        
+        /* Fixed position (positioned relative to viewport, stays when scrolling) */
+        .fixed {
+            position: fixed;
+            background-color: #9b59b6;
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        /* Sticky position (behaves like relative until scrolled to threshold, then like fixed) */
+        .sticky {
+            position: sticky;
+            background-color: #f1c40f;
+            top: 20px;
+        }
+        
+        /* Section to demonstrate the different positions */
+        .section {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Position Properties</h1>
+    
+    <div class="container">
+        <div class="section">
+            <h2>Static Position</h2>
+            <p>Static positioning is the default positioning for all elements. Elements are positioned according to the normal flow of the document.</p>
+            <div class="position-box static">Static</div>
+        </div>
+        
+        <div class="section">
+            <h2>Relative Position</h2>
+            <p>Relative positioning positions an element relative to its normal position. Setting top, right, bottom, and left properties will move the element away from its normal position.</p>
+            <div class="position-box relative">Relative</div>
+            <p>This box is positioned 20px from the top and 20px from the left of its normal position.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Absolute Position</h2>
+            <p>Absolute positioning positions an element relative to its nearest positioned ancestor (position is not static). If no positioned ancestors exist, it is relative to the document body.</p>
+            <div class="position-box absolute">Absolute</div>
+            <p>This box is positioned 150px from the top and 20px from the right of its closest positioned ancestor (the container).</p>
+        </div>
+        
+        <div class="section">
+            <h2>Fixed Position</h2>
+            <p>Fixed positioning positions an element relative to the viewport. The element will stay in the same place even if the page is scrolled.</p>
+            <div class="position-box fixed">Fixed</div>
+            <p>This box is positioned 20px from the bottom and 20px from the right of the viewport. Scroll to see it stay in place.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Sticky Position</h2>
+            <p>Sticky positioning is a hybrid of relative and fixed positioning. The element is treated as relative until a scroll threshold is met, then it is treated as fixed.</p>
+            <div class="position-box sticky">Sticky</div>
+            <p>This box is positioned with top: 20px. Scroll to see it stick to the top when it reaches 20px from the top of the viewport.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat. Vivamus et tincidunt enim, et elementum nisl. Nullam vel elit vel orci vehicula imperdiet.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat. Vivamus et tincidunt enim, et elementum nisl. Nullam vel elit vel orci vehicula imperdiet.</p>
+        </div>
+    </div>
+</body>
+</html> 

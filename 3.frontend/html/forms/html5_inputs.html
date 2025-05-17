@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5 Input Types</title>
+</head>
+<body>
+    <h1>HTML5 Input Types</h1>
+    <p>This form demonstrates various HTML5 input types: number, range, color, date, file, time, month, week, and email.</p>
+
+    <form action="#" method="get">
+        <fieldset>
+            <legend>HTML5 Input Types</legend>
+            
+            <!-- Number input -->
+            <div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="100">
+            </div>
+            <br>
+            
+            <!-- Range input -->
+            <div>
+                <label for="rating">Rating (1-10):</label>
+                <input type="range" id="rating" name="rating" min="1" max="10">
+                <output for="rating" id="ratingValue">5</output>
+                <script>
+                    document.getElementById('rating').addEventListener('input', function() {
+                        document.getElementById('ratingValue').textContent = this.value;
+                    });
+                </script>
+            </div>
+            <br>
+            
+            <!-- Color input -->
+            <div>
+                <label for="favcolor">Favorite Color:</label>
+                <input type="color" id="favcolor" name="favcolor">
+            </div>
+            <br>
+            
+            <!-- Date input -->
+            <div>
+                <label for="birthdate">Birth Date:</label>
+                <input type="date" id="birthdate" name="birthdate">
+            </div>
+            <br>
+            
+            <!-- File input -->
+            <div>
+                <label for="document">Upload Document:</label>
+                <input type="file" id="document" name="document">
+            </div>
+            <br>
+            
+            <!-- Time input -->
+            <div>
+                <label for="meeting-time">Meeting Time:</label>
+                <input type="time" id="meeting-time" name="meeting-time">
+            </div>
+            <br>
+            
+            <!-- Month input -->
+            <div>
+                <label for="birth-month">Birth Month:</label>
+                <input type="month" id="birth-month" name="birth-month">
+            </div>
+            <br>
+            
+            <!-- Week input -->
+            <div>
+                <label for="vacation-week">Vacation Week:</label>
+                <input type="week" id="vacation-week" name="vacation-week">
+            </div>
+            <br>
+            
+            <!-- Email input -->
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="example@domain.com">
+            </div>
+            <br>
+            
+            <!-- Submit button -->
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html> 

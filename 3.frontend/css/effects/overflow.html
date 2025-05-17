@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Overflow: Scroll</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        .example-container {
+            margin: 30px 0;
+        }
+        
+        .overflow-box {
+            width: 300px;
+            height: 200px;
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* Overflow: visible (default) */
+        .overflow-visible {
+            overflow: visible;
+        }
+        
+        /* Overflow: hidden */
+        .overflow-hidden {
+            overflow: hidden;
+        }
+        
+        /* Overflow: scroll */
+        .overflow-scroll {
+            overflow: scroll;
+        }
+        
+        /* Overflow: auto */
+        .overflow-auto {
+            overflow: auto;
+        }
+        
+        /* Overflow-x and Overflow-y */
+        .overflow-x-scroll {
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+        
+        .overflow-y-scroll {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        
+        /* Long content for demonstration */
+        .long-content {
+            width: 500px; /* Wider than container */
+        }
+        
+        /* Tall content for demonstration */
+        .tall-content {
+            height: 400px; /* Taller than container */
+            background: linear-gradient(to bottom, #f0f0f0, #cccccc);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Overflow: Handling Content Overflow</h1>
+        
+        <div class="example-container">
+            <h2>overflow: visible (Default)</h2>
+            <p>Content is not clipped and may overflow outside the container.</p>
+            <div class="overflow-box overflow-visible">
+                <div class="long-content">
+                    <h3>Overflow: Visible</h3>
+                    <p>This content is wider than its container. With <code>overflow: visible</code>, the content will flow outside the boundaries of the container. Note how this text extends beyond the right edge of the box.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-container">
+            <h2>overflow: hidden</h2>
+            <p>Content is clipped if it overflows and no scrollbar is provided.</p>
+            <div class="overflow-box overflow-hidden">
+                <div class="long-content">
+                    <h3>Overflow: Hidden</h3>
+                    <p>This content is wider than its container. With <code>overflow: hidden</code>, any content that extends beyond the boundaries of the container will be clipped (hidden from view).</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-container">
+            <h2>overflow: scroll</h2>
+            <p>Content is clipped and a scrollbar is added to see the rest of the content.</p>
+            <div class="overflow-box overflow-scroll">
+                <div class="tall-content">
+                    <h3>Overflow: Scroll</h3>
+                    <p>This content is taller than its container. With <code>overflow: scroll</code>, scrollbars will appear on both axes, allowing you to scroll to see the hidden content.</p>
+                    <p>Scrollbars appear even if the content doesn't overflow.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-container">
+            <h2>overflow: auto</h2>
+            <p>Similar to scroll, but scrollbars are only added when necessary.</p>
+            <div class="overflow-box overflow-auto">
+                <div class="tall-content">
+                    <h3>Overflow: Auto</h3>
+                    <p>This content is taller than its container. With <code>overflow: auto</code>, scrollbars will only appear when the content overflows the container.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-container">
+            <h2>overflow-x: scroll and overflow-y: hidden</h2>
+            <p>Control overflow separately for horizontal and vertical directions.</p>
+            <div class="overflow-box overflow-x-scroll">
+                <div class="long-content">
+                    <h3>Overflow-X: Scroll</h3>
+                    <p>This content is wider than its container. With <code>overflow-x: scroll</code> and <code>overflow-y: hidden</code>, a horizontal scrollbar will appear, but any vertical overflow will be clipped.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-container">
+            <h2>overflow-y: scroll and overflow-x: hidden</h2>
+            <div class="overflow-box overflow-y-scroll">
+                <div class="tall-content">
+                    <h3>Overflow-Y: Scroll</h3>
+                    <p>This content is taller than its container. With <code>overflow-y: scroll</code> and <code>overflow-x: hidden</code>, a vertical scrollbar will appear, but any horizontal overflow will be clipped.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec augue tincidunt luctus. Donec eget massa vel magna fringilla feugiat.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

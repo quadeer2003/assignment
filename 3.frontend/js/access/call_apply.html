@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript call() and apply()</title>
+</head>
+<body>
+    <h1>JavaScript call() and apply() Methods</h1>
+    <p>This demonstrates how to invoke functions using call() and apply() and shows the differences between them.</p>
+    
+    <div id="output"></div>
+    
+    <script>
+        // Function to append text to the output div
+        function appendOutput(text) {
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML += text + "<br>";
+        }
+        
+        appendOutput("<h2>Basic Example</h2>");
+        
+        // Function to be invoked with call() and apply()
+        function greet(greeting, punctuation) {
+            return `${greeting}, ${this.name}${punctuation}`;
+        }
+        
+        // Objects to be used as 'this' value
+        const person1 = { name: "John" };
+        const person2 = { name: "Alice" };
+        
+        // Using call() - passing arguments individually
+        const greetingWithCall = greet.call(person1, "Hello", "!");
+        appendOutput(`Using call(): ${greetingWithCall}`);
+        
+        // Using apply() - passing arguments as an array
+        const greetingWithApply = greet.apply(person2, ["Hi", "?"]);
+        appendOutput(`Using apply(): ${greetingWithApply}`);
+        
+        appendOutput("<h2>Difference between call() and apply()</h2>");
+        appendOutput("<strong>call()</strong> - Arguments are passed individually (comma-separated)");
+        appendOutput("<strong>apply()</strong> - Arguments are passed as an array");
+        
+        appendOutput("<h2>Practical Example: Math Functions</h2>");
+        
+        // Array of numbers
+        const numbers = [5, 12, 3, 8, 45, 23, 1, 99];
+        
+        // Finding max and min using apply()
+        const maxNumber = Math.max.apply(null, numbers);
+        const minNumber = Math.min.apply(null, numbers);
+        
+        appendOutput(`Array: [${numbers.join(", ")}]`);
+        appendOutput(`Maximum (using apply): ${maxNumber}`);
+        appendOutput(`Minimum (using apply): ${minNumber}`);
+        
+        // Same operation using call() would require spreading the array
+        appendOutput("<p>To use call() for the same operation, we would need to spread the array:</p>");
+        appendOutput(`<code>Math.max.call(null, ...numbers)</code>`);
+        
+        appendOutput("<h2>Function Borrowing Example</h2>");
+        
+        // Object with a method
+        const calculator = {
+            num: 100,
+            calculate: function(operation, value) {
+                switch(operation) {
+                    case 'add':
+                        return this.num + value;
+                    case 'subtract':
+                        return this.num - value;
+                    case 'multiply':
+                        return this.num * value;
+                    case 'divide':
+                        return this.num / value;
+                    default:
+                        return this.num;
+                }
+            }
+        };
+        
+        // Another object without the calculate method
+        const anotherObject = {
+            num: 50
+        };
+        
+        // Borrowing the calculate method using call
+        const resultWithCall = calculator.calculate.call(anotherObject, 'multiply', 3);
+        appendOutput(`Borrowing method with call() - anotherObject.num * 3 = ${resultWithCall}`);
+        
+        // Borrowing the calculate method using apply
+        const resultWithApply = calculator.calculate.apply(anotherObject, ['add', 10]);
+        appendOutput(`Borrowing method with apply() - anotherObject.num + 10 = ${resultWithApply}`);
+        
+        appendOutput("<h2>Performance Considerations</h2>");
+        appendOutput("In modern JavaScript, the performance difference between call() and apply() is minimal.");
+        appendOutput("However, for functions with a large number of arguments, call() with spread syntax is generally preferred:");
+        appendOutput("<code>func.call(context, ...args)</code> instead of <code>func.apply(context, args)</code>");
+        
+        appendOutput("<h2>Modern Alternative: Function.prototype.bind()</h2>");
+        appendOutput("Unlike call() and apply(), bind() doesn't immediately invoke the function. Instead, it returns a new function with 'this' set to the provided value.");
+        
+        const boundGreet = greet.bind(person1, "Welcome");
+        appendOutput(`Using bind(): ${boundGreet("!")}`);
+    </script>
+</body>
+</html> 

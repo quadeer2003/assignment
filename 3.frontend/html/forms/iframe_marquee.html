@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iframes and Marquee Demo</title>
+</head>
+<body>
+    <h1>Iframes and Marquee Demo</h1>
+    
+    <!-- Marquee element examples -->
+    <h2>Marquee Element Examples</h2>
+    
+    <!-- Basic marquee with default scrolling (from right to left) -->
+    <marquee>This is a basic marquee scrolling from right to left.</marquee>
+    
+    <!-- Marquee with left to right scrolling direction -->
+    <marquee direction="right" bgcolor="#f0f0f0">
+        This marquee scrolls from left to right with a light gray background.
+    </marquee>
+    
+    <!-- Marquee with up to down scrolling -->
+    <marquee direction="down" height="100" behavior="scroll">
+        This marquee scrolls from top to bottom.
+    </marquee>
+    
+    <!-- Marquee with alternate scrolling behavior -->
+    <marquee behavior="alternate" bgcolor="#e6f7ff" loop="10">
+        This marquee will bounce back and forth 10 times with a light blue background.
+    </marquee>
+    
+    <!-- Marquee with slide behavior -->
+    <marquee behavior="slide" direction="left">
+        This marquee will slide once from right to left and stop.
+    </marquee>
+    
+    <!-- Marquee with controlled speed -->
+    <marquee scrollamount="10" bgcolor="#ffebee">
+        This marquee scrolls faster (scrollamount=10) with a light red background.
+    </marquee>
+    
+    <!-- Marquee with controlled scroll delay -->
+    <marquee scrolldelay="200" bgcolor="#e8f5e9">
+        This marquee has a longer delay between scrolls (scrolldelay=200) with a light green background.
+    </marquee>
+    
+    <hr>
+    
+    <!-- Iframe examples -->
+    <h2>Iframe Examples</h2>
+    
+    <h3>Basic Iframe</h3>
+    <iframe src="input_types.html" width="100%" height="300"></iframe>
+    
+    <h3>Iframe with Border and Styling</h3>
+    <iframe src="html5_inputs.html" width="80%" height="300" style="border: 2px solid blue; border-radius: 10px;"></iframe>
+    
+    <h3>Iframe with External Website (if allowed by the site's X-Frame-Options)</h3>
+    <iframe src="https://www.example.com" width="100%" height="300"></iframe>
+    
+    <h3>Iframe with Fallback Content</h3>
+    <iframe src="nonexistent.html" width="100%" height="200">
+        <p>Your browser does not support iframes or the requested page could not be loaded.</p>
+    </iframe>
+    
+    <h3>Iframe with YouTube Video</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+    <h3>Nested Content in Iframes</h3>
+    <div style="display: flex; justify-content: space-between;">
+        <iframe src="input_restrictions.html" width="48%" height="300"></iframe>
+        <iframe src="target_attribute.html" width="48%" height="300"></iframe>
+    </div>
+    
+    <p><strong>Note:</strong> The marquee element is deprecated in HTML5 but still works in most browsers. For modern web development, CSS animations are recommended instead.</p>
+</body>
+</html> 

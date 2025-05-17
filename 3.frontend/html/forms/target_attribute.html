@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Target Attribute Demo</title>
+</head>
+<body>
+    <h1>Target Attribute Demo</h1>
+    <p>This page demonstrates the various values of the target attribute in links and forms.</p>
+
+    <h2>Link Target Attributes</h2>
+    <ul>
+        <li><a href="https://www.google.com" target="_blank">Open Google in a new tab (_blank)</a></li>
+        <li><a href="https://www.bing.com" target="_self">Open Bing in the same frame (_self)</a></li>
+        <li><a href="https://www.yahoo.com" target="_parent">Open Yahoo in the parent frame (_parent)</a></li>
+        <li><a href="https://www.duckduckgo.com" target="_top">Open DuckDuckGo in the full body of the window (_top)</a></li>
+    </ul>
+
+    <h2>Form Target Attributes</h2>
+    
+    <h3>Form with target="_blank" (Results in new tab)</h3>
+    <form action="https://www.google.com/search" method="get" target="_blank">
+        <label for="q1">Search Google in new tab:</label>
+        <input type="text" id="q1" name="q" value="HTML target attribute">
+        <input type="submit" value="Search">
+    </form>
+    <br>
+    
+    <h3>Form with target="_self" (Results in same frame)</h3>
+    <form action="https://www.google.com/search" method="get" target="_self">
+        <label for="q2">Search Google in same frame:</label>
+        <input type="text" id="q2" name="q" value="HTML target attribute">
+        <input type="submit" value="Search">
+    </form>
+    <br>
+    
+    <h3>Demonstrating target with iframes</h3>
+    <p>The links below target specific named frames:</p>
+    
+    <div style="display: flex;">
+        <!-- Left side - links that target the iframe -->
+        <div style="width: 30%; padding-right: 20px;">
+            <p><a href="input_types.html" target="frame1">Load Input Types in Frame</a></p>
+            <p><a href="html5_inputs.html" target="frame1">Load HTML5 Inputs in Frame</a></p>
+            <p><a href="input_restrictions.html" target="frame1">Load Input Restrictions in Frame</a></p>
+        </div>
+        
+        <!-- Right side - iframe that displays the target -->
+        <div style="width: 70%;">
+            <iframe name="frame1" width="100%" height="400" src="about:blank" style="border: 1px solid #999;"></iframe>
+        </div>
+    </div>
+    
+    <p><strong>Note:</strong> The target attribute specifies where to open the linked document or where to display the response after submitting a form.</p>
+</body>
+</html> 

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .form-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .input-error {
+            border-color: red;
+        }
+        
+        .success-message {
+            background-color: #dff0d8;
+            color: #3c763d;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Form Validation</h1>
+    <p>This example demonstrates form validation using JavaScript. Empty fields will show an error when you submit the form.</p>
+    
+    <div class="form-container">
+        <form id="myForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <div class="error" id="nameError">Name is required</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <div class="error" id="emailError">Email is required</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+                <div class="error" id="messageError">Message is required</div>
+            </div>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <div class="success-message" id="successMessage">
+        Form submitted successfully!
+    </div>
+    
+    <script>
+        // Get form and form elements
+        const form = document.getElementById('myForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        
+        // Get error elements
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const messageError = document.getElementById('messageError');
+        
+        // Get success message element
+        const successMessage = document.getElementById('successMessage');
+        
+        // Function to validate form
+        function validateForm(event) {
+            // Prevent form submission
+            event.preventDefault();
+            
+            // Reset errors
+            resetErrors();
+            
+            // Flag to track if form is valid
+            let isValid = true;
+            
+            // Validate name
+            if (nameInput.value.trim() === '') {
+                showError(nameInput, nameError);
+                isValid = false;
+            }
+            
+            // Validate email
+            if (emailInput.value.trim() === '') {
+                showError(emailInput, emailError);
+                isValid = false;
+            } else if (!isValidEmail(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address';
+                showError(emailInput, emailError);
+                isValid = false;
+            }
+            
+            // Validate message
+            if (messageInput.value.trim() === '') {
+                showError(messageInput, messageError);
+                isValid = false;
+            }
+            
+            // If form is valid, show success message
+            if (isValid) {
+                form.reset();
+                successMessage.style.display = 'block';
+                
+                // Hide success message after 3 seconds
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            }
+        }
+        
+        // Function to show error
+        function showError(input, errorElement) {
+            input.classList.add('input-error');
+            errorElement.style.display = 'block';
+        }
+        
+        // Function to reset errors
+        function resetErrors() {
+            // Reset input borders
+            nameInput.classList.remove('input-error');
+            emailInput.classList.remove('input-error');
+            messageInput.classList.remove('input-error');
+            
+            // Hide error messages
+            nameError.style.display = 'none';
+            emailError.style.display = 'none';
+            messageError.style.display = 'none';
+            
+            // Hide success message
+            successMessage.style.display = 'none';
+        }
+        
+        // Function to validate email format
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Add form submit event listener
+        form.addEventListener('submit', validateForm);
+        
+        // Add input event listeners to remove errors on typing
+        nameInput.addEventListener('input', function() {
+            if (nameInput.value.trim() !== '') {
+                nameInput.classList.remove('input-error');
+                nameError.style.display = 'none';
+            }
+        });
+        
+        emailInput.addEventListener('input', function() {
+            if (emailInput.value.trim() !== '') {
+                emailInput.classList.remove('input-error');
+                emailError.style.display = 'none';
+            }
+        });
+        
+        messageInput.addEventListener('input', function() {
+            if (messageInput.value.trim() !== '') {
+                messageInput.classList.remove('input-error');
+                messageError.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html> 
